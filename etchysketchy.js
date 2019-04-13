@@ -40,8 +40,7 @@ function rainbowColor (e) {
 		var r = Math.floor(Math.random() * 255);
 		var g = Math.floor(Math.random() * 255);
 		var b = Math.floor(Math.random() * 255);
-		var o = Math.floor(Math.random() * 10);
-		(e.target).setAttribute('style', 'background-color: rgb(' + r + ', ' + g + ', ' + b + ', .' + o + ') !important;');
+		(e.target).setAttribute('style', 'background-color: rgb(' + r + ', ' + g + ', ' + b + ', .8) !important;');
 	} else return;
 }
 
@@ -51,6 +50,11 @@ function buttonChoice (choice) {
 		document.removeEventListener('mouseover', changeColor);
 		document.removeEventListener('mouseover', rainbowColor);
 		document.addEventListener('mouseover', eraseColor);
+	} else if (choice === "black") {
+		// Remove other event listeners
+		document.removeEventListener('mouseover', rainbowColor);
+		document.removeEventListener('mouseover', eraseColor);
+		document.addEventListener('mouseover', changeColor);
 	} else if (choice === "reset") {
 		size = prompt("How many units squared would you like your drawing board?", 20);
 		drawBoard(size);
