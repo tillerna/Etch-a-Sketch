@@ -57,7 +57,9 @@ function buttonChoice (choice) {
 		document.addEventListener('mouseover', changeColor);
 	} else if (choice === "reset") {
 		size = prompt("How many units squared would you like your drawing board?", 20);
-		drawBoard(size);
+		if (size > 100) {
+			prompt("That number is too large.  Try again with a smaller number.");
+		} else drawBoard(size);
 		// Remove other event listeners
 		document.removeEventListener('mouseover', rainbowColor);
 		document.removeEventListener('mouseover', eraseColor);
